@@ -54,8 +54,6 @@ public class GameView extends View {
     private int viewHeight;
     private Sprite playerHuman;
 
-    private Sprite evilHuman;
-
     private Sprite exitAchieved;
 
     private Sprite exitEarlier;
@@ -96,7 +94,7 @@ public class GameView extends View {
         int hBrick = b.getHeight();
         Rect firstFrame = new Rect(0, 0, wBrick, hBrick);
 
-//        LevelOneSettings levelOneSettings = new LevelOneSettings();
+
         ArrayList<int[]> bricksCoords = currentLevelSettings.getBricksCoords();
         for(int i = 0; i < bricksCoords.size(); i++){
             bricks.add(new Sprite(bricksCoords.get(i)[0], bricksCoords.get(i)[1], 0, 0, firstFrame, b, false, true));
@@ -123,13 +121,6 @@ public class GameView extends View {
 
         playerHuman.addFrame(new Rect(0, 0, w, h));
 
-//        b = BitmapFactory.decodeResource(getResources(), R.drawable.evil);
-//
-//        w = b.getWidth() / 8;
-//        h = b.getHeight() / 4;
-//        firstFrame = new Rect(0, 0, w, h);
-//
-//        evilHuman = new Sprite(tabletWidth - 200, tabletHeight - 148 - 128, 0, 0, firstFrame, b, true, false);
 
 
         b = BitmapFactory.decodeResource(getResources(), R.drawable.gold1);
@@ -236,7 +227,6 @@ public class GameView extends View {
 
 
             playerHuman.draw(canvas);
-//        evilHuman.draw(canvas);
 
 
             for(int i = 0; i < golds.size(); i++){
@@ -255,21 +245,10 @@ public class GameView extends View {
             exitEarlier.draw(canvas);
         }
         else{
-
-//            canvas.drawRect(new Rect((int)(tabletWidth / 2) - 300,
-//                    (int)(tabletHeight / 2) - 225,
-//                    (int)(tabletWidth / 2) + 300,
-//                    (int)(tabletHeight / 2) + 225), p);
-
             canvas.drawBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.endgamenotify),
                     (int)(tabletWidth / 2) - 500, (int)(tabletHeight / 2) - 250, p);
 
-//            Paint gameOverPaint = new Paint();
-//            gameOverPaint.setAntiAlias(true);
-//            p.setAntiAlias(40.0f);
-//            p.setColor(Color.argb(255, 0, 12, 33));
-//
-//            canvas.drawText("Уровень пройден!", (int)(tabletWidth / 2) - 150, (int)(tabletHeight / 2) - 100, p);
+
             exitAchieved.draw(canvas);
 
         }
@@ -414,107 +393,6 @@ public class GameView extends View {
             playerHuman.setVy(0);
         }
 
-//        int middleBottomEvilX = (int)(evilHuman.getX() + (int)(evilHuman.getFrameWidth() / 2));
-//        int middleBottomEvilY = (int)(evilHuman.getY() + evilHuman.getFrameHeight());
-//
-//        boolean hasEvilLadderIntersect = false;
-//        Sprite nearestEvilLadder = null;
-//        for(int i = 0; i < ladders.size(); i++){
-//            if(ladders.get(i).isPointInside(middleBottomEvilX, middleBottomEvilY)){
-//                // есть пересечение с лестницей
-//                hasEvilLadderIntersect = true;
-//                nearestEvilLadder = ladders.get(i);
-//                break;
-//            }
-//        }
-//
-//        boolean hasEvilBricksUpperIntersect = false;
-//        Sprite nearestEvilBrick = null;
-//        // есть или пересечение с каким-либо нижестоящим блоком
-//        for(int i = 0; i < bricks.size(); i++){
-//
-//            if(bricks.get(i).isPointInside(middleBottomEvilX, middleBottomEvilY + 5)){
-//                hasEvilBricksUpperIntersect = true;
-//                nearestEvilBrick = bricks.get(i);
-//                break;
-//            }
-//        }
-//
-//
-//        if(!hasEvilBricksUpperIntersect && !hasEvilLadderIntersect && evilHumanMovingType != 3 && evilHumanMovingType != 0){
-//            evilHumanMovingType = 0;
-//            evilHuman.clearFrames();
-//            evilHuman.setVy(100);
-//            evilHuman.setVx(0);
-//            evilHuman.addFrame(new Rect(0, 0, w, h));
-//        }
-//        else if(evilHuman.getX() > playerHuman.getX() && Math.abs(evilHuman.getY() - playerHuman.getY()) <= 20 && evilHumanMovingType != 2 && hasEvilBricksUpperIntersect){
-//            // враг справа - враг движется влево
-//            evilHumanMovingType = 2;
-//            evilHuman.clearFrames();
-//            evilHuman.setVx(-100);
-//            evilHuman.setVy(0);
-//            for(int i = 0; i < 8; i++){
-//                evilHuman.addFrame(new Rect(i * w, evilHumanMovingType * h, i * w + w, evilHumanMovingType * h + h));
-//            }
-//        }
-//        else if(evilHuman.getX() < playerHuman.getX() && Math.abs(evilHuman.getY() - playerHuman.getY()) <= 20 && evilHumanMovingType != 1 && hasEvilBricksUpperIntersect){
-//            // враг слева - враг движется вправо
-//            evilHumanMovingType = 1;
-//            evilHuman.clearFrames();
-//            evilHuman.setVx(100);
-//            evilHuman.setVy(0);
-//            for (int i = 0; i < 8; i++) {
-//                evilHuman.addFrame(new Rect(i * w, evilHumanMovingType * h, i * w + w, evilHumanMovingType * h + h));
-//            }
-//        }
-//        else if(evilHuman.getY() > playerHuman.getY() && hasEvilLadderIntersect && evilHumanMovingType != 3 && Math.abs(evilHuman.getY() - playerHuman.getY()) > 20){
-//            // враг снизу - враг взбирается по лестнице
-//            evilHumanMovingType = 3;
-//            evilHuman.clearFrames();
-//            evilHuman.setVx(0);
-//            evilHuman.setVy(-100);
-//            for (int i = 0; i < 2; i++) {
-//                evilHuman.addFrame(new Rect(i * w, evilHumanMovingType * h, i * w + w, evilHumanMovingType * h + h));
-//            }
-//        }
-//        else if(evilHuman.getY() < playerHuman.getY() && hasEvilLadderIntersect && evilHumanMovingType != 4 && Math.abs(evilHuman.getY() - playerHuman.getY()) > 20){
-//            // враг сверху - враг спускается по лестнице
-//            evilHumanMovingType = 4;
-//            evilHuman.clearFrames();
-//            evilHuman.setVx(0);
-//            evilHuman.setVy(100);
-//            for (int i = 0; i < 2; i++) {
-//                evilHuman.addFrame(new Rect(i * w, (evilHumanMovingType - 1) * h, i * w + w, (evilHumanMovingType - 1) * h + h));
-//            }
-//        }
-//
-//
-//
-//
-//
-//
-//
-//        evilHuman.update(timerInterval);
-//
-//
-//        if(evilHuman.getX() + evilHuman.getFrameWidth() > tabletWidth){
-//            evilHuman.setX(tabletWidth - evilHuman.getFrameWidth() + 5);
-//            evilHuman.setVx(0);
-//        }
-//        else if(evilHuman.getX() < 0){
-//            evilHuman.setX(0);
-//            evilHuman.setVx(0);
-//        }
-//
-//        if(evilHuman.getY() + evilHuman.getFrameHeight() > tabletHeight){
-//            evilHuman.setY(tabletHeight - evilHuman.getFrameHeight());
-//            evilHuman.setVy(0);
-//        }
-//        else if(evilHuman.getY() < 0){
-//            evilHuman.setY(0);
-//            evilHuman.setVy(0);
-//        }
 
         if(playerHuman.intersect(golds.get(activeGoldIndex))){
             // есть пересечение человечка с самородком
