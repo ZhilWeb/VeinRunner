@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">VeinRunner</string>
+    <string name="levelChoice">Выбрать уровень</string>
+    <string name="returnMain">На главную</string>
+    <string name="levelsTitle">Уровни</string>
+    <string name="vein_runner">VEIN RUNNER</string>
+</resources>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LevelListActivity"
+    android:background="@color/darkBlue">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/levelsTitle"
+            android:textColor="@color/white"
+            android:textSize="32dp"/>
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:id="@+id/levelListGridLayout">
+
+        </GridLayout>
+        <Button
+            android:id="@+id/buttonLevelList"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="@string/returnMain"
+            android:backgroundTint="@color/white"
+            android:textColor="@color/darkBlue"
+            android:onClick="returnToMain" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
